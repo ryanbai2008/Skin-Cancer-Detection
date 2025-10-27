@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skin Disease Classifier (SDC)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <img src="assets/SDC_logo.png" alt="SDC Logo" class="logo" />
+      <div>
+        <h1>Skin Disease Classifier</h1>
+        <p class="subtitle">AI-Powered Diagnostic Assistant</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <section class="upload-section">
+      <h2>Upload a Skin Lesion Image</h2>
+      <p class="instruction">Our model will analyze the image and predict the most likely condition.</p>
+
+      <div class="upload-box">
+        <input type="file" id="fileInput" accept="image/*" />
+        <div class="preview-wrapper">
+          <img id="preview" alt="Preview" class="preview-img" />
+        </div>
+        <button id="predictBtn">Run Diagnosis</button>
+      </div>
+
+      <div id="result-box" class="result-box">
+        <p id="result" class="result-text">No image analyzed yet.</p>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h2>About This Project</h2>
+      <p>
+        The Skin Disease Classifier (SDC) is a deep learning-based system designed to assist with early detection of
+        common skin diseases. It uses a convolutional neural network trained on dermatological images to classify seven
+        conditions, including melanoma and basal cell carcinoma.
+      </p>
+      <p class="disclaimer">
+        <strong>Disclaimer:</strong> This tool is for educational and research purposes only. It is not intended for
+        clinical or diagnostic use.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Skin Disease Classifier (SDC) | Developed by Ryan Bai</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

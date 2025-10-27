@@ -1,0 +1,161 @@
+:root {
+  --primary: #0077b6;
+  --primary-light: #caf0f8;
+  --text-dark: #023047;
+  --bg-light: #f9fbfd;
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: linear-gradient(180deg, var(--primary), #0096c7);
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+h1 {
+  margin: 5px 0 0 0;
+  font-size: 1.8em;
+}
+
+.subtitle {
+  font-size: 1em;
+  opacity: 0.9;
+  margin-top: 3px;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.main-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.upload-section, .about-section {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px var(--shadow);
+  padding: 25px 30px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary-light);
+  padding-bottom: 5px;
+}
+
+/* ---------- UPLOAD SECTION ---------- */
+.upload-box {
+  margin-top: 20px;
+  text-align: center;
+}
+
+input[type="file"] {
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.preview-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.preview-img {
+  max-width: 280px;
+  max-height: 280px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px var(--shadow);
+  object-fit: cover;
+  display: none; /* Hidden until image loaded */
+}
+
+button {
+  padding: 10px 25px;
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #005f87;
+  transform: translateY(-1px);
+}
+
+.result-box {
+  margin-top: 20px;
+  background-color: var(--primary-light);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.result-text {
+  font-size: 1.05em;
+  font-weight: 500;
+}
+
+/* ---------- ABOUT SECTION ---------- */
+.about-section p {
+  line-height: 1.6;
+}
+
+.disclaimer {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 0.95em;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  text-align: center;
+  background-color: #e0f7fa;
+  padding: 12px;
+  color: var(--text-dark);
+  font-size: 0.9em;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (min-width: 600px) {
+  .header-content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+}
