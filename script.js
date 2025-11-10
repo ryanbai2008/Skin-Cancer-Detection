@@ -39,7 +39,7 @@ predictBtn.addEventListener("click", async () => {
     try {
       const dataURI = reader.result;
       const res = await fetch(
-        "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
+        "https://huggingface.co/spaces/rybai08/skin-cancer-detection-backend", //https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
