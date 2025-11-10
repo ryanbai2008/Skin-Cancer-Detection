@@ -25,40 +25,41 @@ input.addEventListener("change", (e) => {
 });
 
 predictBtn.addEventListener("click", async () => {
-  if (!selectedFile) {
-    alert("Please upload an image first!");
-    return;
-  }
-
+  if (!selectedFile) return alert("Please upload an image first!");
   result.textContent = "Running model on backend...";
 
-  try {
-    const formData = new FormData();
-    formData.append("data", selectedFile);
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const base64 = reader.result.split(",")[1]; // strip "data:image/..." prefix
 
-    const res = await fetch(
-      "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
-      { method: "POST", body: formData }
-    );
+    try {
+      const res = await fetch(
+        "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: [base64] }),
+        }
+      );
 
-    if (!res.ok) throw new Error(`Server error: ${res.status}`);
-    const data = await res.json();
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      const data = await res.json();
 
-    // Gradio returns { data: [ { label: prob, ... } ] }
-    const predictions = data.data[0];
-    const sorted = Object.entries(predictions).sort((a, b) => b[1] - a[1]);
-    const [topLabel, topProb] = sorted[0];
-    const confidence = (topProb * 100).toFixed(1);
+      const predictions = data.data[0];
+      const sorted = Object.entries(predictions).sort((a, b) => b[1] - a[1]);
+      const [topLabel, topProb] = sorted[0];
+      const confidence = (topProb * 100).toFixed(1);
 
-    result.innerHTML = `<b>${topLabel}</b><br>Confidence: ${confidence}%<br><br>` +
-      sorted
-        .map(([lbl, p]) => `${lbl}: ${(p * 100).toFixed(1)}%`)
-        .join("<br>");
-  } catch (err) {
-    console.error(err);
-    result.textContent = "Error connecting to backend.";
-  }
+      result.innerHTML = `<b>${topLabel}</b><br>Confidence: ${confidence}%<br><br>` +
+        sorted.map(([lbl, p]) => `${lbl}: ${(p * 100).toFixed(1)}%`).join("<br>");
+    } catch (err) {
+      console.error(err);
+      result.textContent = "Error connecting to backend.";
+    }
+  };
+  reader.readAsDataURL(selectedFile);
 });
+
 
 
 
