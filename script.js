@@ -36,7 +36,6 @@ predictBtn.addEventListener("click", async () => {
     const formData = new FormData();
     formData.append("data", selectedFile);
 
-    // 👇 Use your Hugging Face backend API endpoint here
     const res = await fetch(
       "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
       { method: "POST", body: formData }
