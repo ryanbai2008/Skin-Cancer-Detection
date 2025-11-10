@@ -10,9 +10,6 @@ const preview = document.getElementById("preview");
 const result = document.getElementById("result");
 const predictBtn = document.getElementById("predictBtn");
 let imageData = null;
-///////////////////////////////////////////////////////////////////////
-const session = await ort.InferenceSession.create("model.onnx");
-///////////////////////////////////////////////////////////////////////
 input.addEventListener("change", e => {
   const file = e.target.files[0];
   if (!file) return;
@@ -43,9 +40,7 @@ predictBtn.addEventListener("click", async () => {
   result.textContent = "Running model...";
 
   // Load ONNX model
-///////////////////////////////////////////////////////////////////////
-  // const session = await ort.InferenceSession.create("model.onnx");
-///////////////////////////////////////////////////////////////////////
+  const session = await ort.InferenceSession.create("model.onnx");
   // Preprocess image (normalize and convert to tensor)
   const data = new Float32Array(3 * 224 * 224);
   for (let i = 0; i < 224 * 224; i++) {
