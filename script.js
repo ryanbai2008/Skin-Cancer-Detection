@@ -1,12 +1,12 @@
-// script.js - updated for Hugging Face backend
-
+// script.js - Fixed for Hugging Face backend
 const labels = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc', 'mel'];
 let labelMap = {};
 
 // Load labels.json if needed (optional)
 fetch("labels.json")
   .then(res => res.json())
-  .then(data => (labelMap = data));
+  .then(data => (labelMap = data))
+  .catch(err => console.log("labels.json not found, using default labels"));
 
 const input = document.getElementById("fileInput");
 const preview = document.getElementById("preview");
@@ -19,8 +19,9 @@ let selectedFile = null;
 input.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
+  
   selectedFile = file;
-
+  
   const reader = new FileReader();
   reader.onload = function () {
     preview.src = reader.result;
@@ -34,48 +35,50 @@ predictBtn.addEventListener("click", async () => {
     alert("Please upload an image first!");
     return;
   }
-
+  
   result.textContent = "Running model on backend...";
-
+  
   const reader = new FileReader();
   reader.onload = async () => {
-    // Convert image to base64 string and remove prefix
-    const base64 = reader.result.split(",")[1];
-
     try {
+      // FIXED: Send the FULL data URI, not just the base64 part
+      const dataURI = reader.result; // Keep the full "data:image/...;base64,..." string
+      
       // Send JSON to Gradio backend API
       const res = await fetch(
-        "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
+        "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ data: [base64] })
+          body: JSON.stringify({ data: [dataURI] }) // Send full data URI
         }
       );
-
-      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Server error: ${res.status} - ${errorText}`);
+      }
+      
       const data = await res.json();
-
+      
       // Gradio returns { data: [ { label: prob, ... } ] }
       const predictions = data.data[0];
       const sorted = Object.entries(predictions).sort((a, b) => b[1] - a[1]);
       const [topLabel, topProb] = sorted[0];
       const confidence = (topProb * 100).toFixed(1);
-
+      
       // Display results
       result.innerHTML = `<b>${topLabel}</b><br>Confidence: ${confidence}%<br><br>` +
         sorted.map(([lbl, p]) => `${lbl}: ${(p * 100).toFixed(1)}%`).join("<br>");
+        
     } catch (err) {
       console.error(err);
-      result.textContent = "Error connecting to backend.";
+      result.textContent = `Error: ${err.message}`;
     }
   };
-
+  
   reader.readAsDataURL(selectedFile);
 });
-
-
-
 
 // const labels = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc', 'mel'];
 // let labelMap = {};
