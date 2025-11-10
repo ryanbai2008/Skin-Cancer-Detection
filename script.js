@@ -3,7 +3,7 @@ let labelMap = {};
 
 fetch("labels.json")
   .then(res => res.json())
-  .then(data => labelMap = data);
+  .then(data => (labelMap = data));
 
 const input = document.getElementById("fileInput");
 const preview = document.getElementById("preview");
@@ -12,13 +12,13 @@ const predictBtn = document.getElementById("predictBtn");
 
 let selectedFile = null;
 
-input.addEventListener("change", e => {
+input.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
   selectedFile = file;
 
   const reader = new FileReader();
-  reader.onload = function() {
+  reader.onload = function () {
     preview.src = reader.result;
   };
   reader.readAsDataURL(file);
@@ -33,38 +33,34 @@ predictBtn.addEventListener("click", async () => {
   result.textContent = "Running model on backend...";
 
   try {
-    // Prepare the file for upload
     const formData = new FormData();
     formData.append("data", selectedFile);
 
-    // Call the Gradio backend API
-    const res = await fetch("https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/", {
-      method: "POST",
-      body: formData
-    });
+    // 👇 Use your Hugging Face backend API endpoint here
+    const res = await fetch(
+      "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
+      { method: "POST", body: formData }
+    );
 
     if (!res.ok) throw new Error(`Server error: ${res.status}`);
     const data = await res.json();
 
-    // Gradio returns output in { data: [ { label: probability, ... } ] }
+    // Gradio returns { data: [ { label: prob, ... } ] }
     const predictions = data.data[0];
-    console.log(predictions);
-
-    // Find top prediction
     const sorted = Object.entries(predictions).sort((a, b) => b[1] - a[1]);
     const [topLabel, topProb] = sorted[0];
-
-    // Use your label map for full name if available
-    const labelName = labelMap[topLabel] || topLabel;
     const confidence = (topProb * 100).toFixed(1);
 
-    result.innerHTML = `<b>${labelName}</b> (${topLabel})<br>Confidence: ${confidence}%`;
-
+    result.innerHTML = `<b>${topLabel}</b><br>Confidence: ${confidence}%<br><br>` +
+      sorted
+        .map(([lbl, p]) => `${lbl}: ${(p * 100).toFixed(1)}%`)
+        .join("<br>");
   } catch (err) {
     console.error(err);
-    result.textContent = "Error connecting to backend. Please try again.";
+    result.textContent = "Error connecting to backend.";
   }
 });
+
 
 
 // const labels = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc', 'mel'];
