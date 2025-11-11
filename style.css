@@ -1,4 +1,4 @@
-/* ---------- MAIN TWO-COLUMN LAYOUT ---------- */
+/* /* ---------- MAIN TWO-COLUMN LAYOUT ---------- */
 .main-section {
   display: flex;
   gap: 30px;
@@ -62,11 +62,11 @@
   color: var(--text-dark);
 }
 
+ */
 
 
 
-
-/* :root {
+:root {
   --primary: #0077b6;
   --primary-light: #caf0f8;
   --text-dark: #023047;
@@ -226,4 +226,4 @@ button:hover {
     width: 70px;
     height: 70px;
   }
-} */
+}
