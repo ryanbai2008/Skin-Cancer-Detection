@@ -279,7 +279,7 @@ predictBtn.addEventListener("click", async () => {
 
   try {
     // Load ONNX model (web-friendly)
-    const session = await ort.InferenceSession.create("model.onnx", {
+    const session = await ort.InferenceSession.create("assets/model.onnx", {
       executionProviders: ['wasm']  // or 'webgl' / 'webgpu' if supported
     });
 
