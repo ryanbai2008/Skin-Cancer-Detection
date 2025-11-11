@@ -1,4 +1,72 @@
-:root {
+/* ---------- MAIN TWO-COLUMN LAYOUT ---------- */
+.main-section {
+  display: flex;
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 1000px; /* wider than main-container */
+  padding: 0 20px;
+}
+
+.about-column, .examples-column {
+  flex: 1; /* equal width */
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px var(--shadow);
+  padding: 25px 30px;
+}
+
+/* ---------- EXAMPLE BUTTONS ---------- */
+.example-buttons {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.example-btn {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.example-btn:hover {
+  background-color: #005f87;
+  transform: translateY(-1px);
+}
+
+.example-btn.active {
+  background-color: #005f87;
+}
+
+/* ---------- EXAMPLE PREVIEW ---------- */
+.example-preview {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.example-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.example-result {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 1em;
+  color: var(--text-dark);
+}
+
+
+
+
+
+/* :root {
   --primary: #0077b6;
   --primary-light: #caf0f8;
   --text-dark: #023047;
@@ -158,4 +226,4 @@ button:hover {
     width: 70px;
     height: 70px;
   }
-}
+} */
