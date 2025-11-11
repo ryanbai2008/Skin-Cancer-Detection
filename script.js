@@ -117,7 +117,7 @@ predictBtn.addEventListener("click", async () => {
       
       // Send JSON to Gradio backend API
       const res = await fetch(
-        "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict",
+        "https://rybai08-skin-cancer-detection-backend.hf.space/api/predict/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
