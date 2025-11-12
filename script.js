@@ -101,11 +101,11 @@ const examplesContent = document.querySelector(".examples-content");
 
 if (collapsibleHeader && examplesContent) {
   collapsibleHeader.addEventListener("click", () => {
-    const isVisible = examplesContent.style.display === "block";
-    examplesContent.style.display = isVisible ? "none" : "block";
+    examplesContent.classList.toggle("show");  // toggle the show class
+    const isVisible = examplesContent.classList.contains("show");
     collapsibleHeader.textContent = isVisible 
-      ? "Example Classifications ▼" 
-      : "Example Classifications ▲";
+      ? "Example Classifications ▲" 
+      : "Example Classifications ▼";
   });
 }
 
@@ -119,6 +119,7 @@ let currentExample = 1;
 exampleImage.src = `assets/example_image_${currentExample}.jpg`;
 exampleResult.innerHTML = `<p>Classification results for Example ${currentExample} will appear here.</p>`;
 
+// Button click logic
 exampleButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const exampleNum = btn.getAttribute("data-example");
@@ -130,11 +131,14 @@ exampleButtons.forEach(btn => {
     // Reset results placeholder (you can later populate with actual classification)
     exampleResult.innerHTML = `<p>Classification results for Example ${exampleNum} will appear here.</p>`;
 
-    // Optional: highlight active button
+    // Highlight active button
     exampleButtons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
   });
 });
-exampleButtons[0].classList.add("active")
+
+// Set the first button as active initially
+exampleButtons[0].classList.add("active");
+
 
 
