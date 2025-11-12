@@ -14,33 +14,32 @@ const predictBtn = document.getElementById("predictBtn");
 
 let imageData = null;
 
-// Handle file selection
-input.addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function() {
-    preview.src = reader.result;
-
-    const img = new Image();
-    img.src = reader.result;
-    img.onload = () => {
-      // Resize to 224x224
-      const canvas = document.createElement("canvas");
-      canvas.width = 224;
-      canvas.height = 224;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0, 224, 224);
-      imageData = ctx.getImageData(0, 0, 224, 224);
-    };
-  };
-  reader.readAsDataURL(file);
-});
-
-
 // UNCOMMENT IF WANT TO PUT PREDICTION BUTTON ON MY WEBSITE AGAIN, IF EVER CONNECTED TO BACKEND
 // UNCOMMENT IF WANT TO PUT PREDICTION BUTTON ON MY WEBSITE AGAIN, IF EVER CONNECTED TO BACKEND
 // UNCOMMENT IF WANT TO PUT PREDICTION BUTTON ON MY WEBSITE AGAIN, IF EVER CONNECTED TO BACKEND
+// // Handle file selection
+// input.addEventListener("change", e => {
+//   const file = e.target.files[0];
+//   if (!file) return;
+//   const reader = new FileReader();
+//   reader.onload = function() {
+//     preview.src = reader.result;
+
+//     const img = new Image();
+//     img.src = reader.result;
+//     img.onload = () => {
+//       // Resize to 224x224
+//       const canvas = document.createElement("canvas");
+//       canvas.width = 224;
+//       canvas.height = 224;
+//       const ctx = canvas.getContext("2d");
+//       ctx.drawImage(img, 0, 0, 224, 224);
+//       imageData = ctx.getImageData(0, 0, 224, 224);
+//     };
+//   };
+//   reader.readAsDataURL(file);
+// });
+
 // Predict button
 // predictBtn.addEventListener("click", async () => {
 //   if (!imageData) {
