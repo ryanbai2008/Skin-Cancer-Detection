@@ -250,3 +250,10 @@ button:hover {
   font-weight: 500;
 }
 
+.example-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
