@@ -188,13 +188,15 @@ button:hover {
 
 .examples-content {
   margin-top: 15px;
-  display: none;
-  transition: max-height 0.3s ease;
+  max-height: 0;
+  opacity: 0;
   overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
 .examples-content.show {
-  display: block;
+  max-height: 1000px; /* or a value large enough for your content */
+  opacity: 1;
 }
 
 .example-buttons {
