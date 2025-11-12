@@ -234,8 +234,8 @@ button:hover {
 }
 
 #example-image {
-  max-width: 500px;
-  max-height: 500px;
+  width: 80%;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 0 8px var(--shadow);
   object-fit: cover;
