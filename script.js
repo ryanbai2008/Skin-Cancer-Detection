@@ -103,8 +103,8 @@ if (collapsibleHeader && examplesContent) {
     examplesContent.classList.toggle("show");  // toggle the show class
     const isVisible = examplesContent.classList.contains("show");
     collapsibleHeader.textContent = isVisible 
-      ? "Example Classifications ▲" 
-      : "Example Classifications ▼";
+      ? "Example Classifications (Show less) ▲" 
+      : "Example Classifications (Show more) ▼";
   });
 }
 
