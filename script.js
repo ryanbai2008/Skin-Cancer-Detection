@@ -38,42 +38,6 @@ input.addEventListener("change", e => {
 });
 
 
-
-
-// // EXAMPLES CODE
-// const exampleData = {
-//   1: { img: "assets/example_image_1.jpg", label: "Melanocytic Nevus", confidence: "92%" },
-//   2: { img: "assets/example_image_2.jpg", label: "Basal Cell Carcinoma", confidence: "87%" },
-//   3: { img: "assets/example_image_3.jpg", label: "Actinic Keratosis", confidence: "78%" },
-// };
-
-// const buttons = document.querySelectorAll(".example-btn");
-// const exampleImg = document.getElementById("example-img");
-// const exampleLabel = document.getElementById("example-label");
-// const exampleConfidence = document.getElementById("example-confidence");
-
-// // Button click event
-// buttons.forEach(btn => {
-//   btn.addEventListener("click", () => {
-//     // Remove "active" from all buttons
-//     buttons.forEach(b => b.classList.remove("active"));
-//     // Add "active" to clicked button
-//     btn.classList.add("active");
-
-//     const index = btn.dataset.index;
-//     const data = exampleData[index];
-
-//     // Update preview image and classification results
-//     exampleImg.src = data.img;
-//     exampleLabel.textContent = data.label;
-//     exampleConfidence.textContent = data.confidence;
-//   });
-// });
-
-
-
-
-
 // UNCOMMENT IF WANT TO PUT PREDICTION BUTTON ON MY WEBSITE AGAIN, IF EVER CONNECTED TO BACKEND
 // UNCOMMENT IF WANT TO PUT PREDICTION BUTTON ON MY WEBSITE AGAIN, IF EVER CONNECTED TO BACKEND
 // UNCOMMENT IF WANT TO PUT PREDICTION BUTTON ON MY WEBSITE AGAIN, IF EVER CONNECTED TO BACKEND
