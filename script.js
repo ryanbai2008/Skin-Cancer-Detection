@@ -135,5 +135,6 @@ exampleButtons.forEach(btn => {
     btn.classList.add("active");
   });
 });
+exampleButtons[0].classList.add("active")
 
 
