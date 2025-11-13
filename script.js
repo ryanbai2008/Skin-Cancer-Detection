@@ -116,7 +116,7 @@ const exampleResult = document.getElementById("example-result");
 // Preload initial example (example 1)
 let currentExample = 1;
 exampleImage.src = `assets/example_image_${currentExample}.jpg`;
-exampleResult.innerHTML = `<p>Classification results for Example ${currentExample} will appear here.</p>`;
+exampleResult.innerHTML = `<p>This is Example ${currentExample} of what classifications will look like</p>`;
 
 // Button click logic
 exampleButtons.forEach(btn => {
