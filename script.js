@@ -116,7 +116,7 @@ const exampleResult = document.getElementById("example-result");
 // Preload initial example (example 1)
 let currentExample = 1;
 exampleImage.src = `assets/example_image_${currentExample}.jpg`;
-exampleResult.innerHTML = `<p>This is Example ${currentExample} of what classifications will look like</p>`;
+exampleResult.innerHTML = `<p>Example ${currentExample} of 3 for what results may look like</p>`;
 
 // Button click logic
 exampleButtons.forEach(btn => {
@@ -128,7 +128,7 @@ exampleButtons.forEach(btn => {
     exampleImage.src = `assets/example_image_${exampleNum}.jpg`;
 
     // Reset results placeholder (you can later populate with actual classification)
-    exampleResult.innerHTML = `<p>Classification results for Example ${exampleNum} will appear here.</p>`;
+    exampleResult.innerHTML = `<p>Example ${exampleNum} of 3 for what results may look like</p>`;
 
     // Highlight active button
     exampleButtons.forEach(b => b.classList.remove("active"));
