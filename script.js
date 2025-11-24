@@ -147,9 +147,10 @@ exampleButtons[0].classList.add("active");
 document.querySelectorAll('.collapsible-disease-header').forEach(header => {
   header.addEventListener('click', () => {
     const content = header.nextElementSibling;
-    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    content.classList.toggle('show');
   });
 });
+
 
 
 
