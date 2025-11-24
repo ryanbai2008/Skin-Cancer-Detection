@@ -258,15 +258,16 @@ button:hover {
 }
 
 /* DISEASE SYMPTOMS STUFF */
-/* ---------- SYMPTOMS / DISEASE COLLAPSIBLES ---------- */
+/* ---------- SYMPTOMS SECTION ---------- */
 .symptoms-section {
-  background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: 0 4px 10px var(--shadow);
-  padding: 25px 30px;
+  background: var(--card-bg);            /* match other sections */
+  border-radius: 16px;                   /* rounded corners */
+  box-shadow: 0 4px 10px var(--shadow);  /* same shadow as other cards */
+  padding: 25px 30px;                    /* spacing consistent with other sections */
   margin-bottom: 30px;
 }
 
+/* ---------- COLLAPSIBLE DISEASE HEADERS ---------- */
 .collapsible-disease-header {
   cursor: pointer;
   user-select: none;
@@ -287,21 +288,48 @@ button:hover {
   color: #005f87;
 }
 
+/* Arrow span inside headers */
+.collapsible-disease-header .arrow {
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+/* ---------- COLLAPSIBLE DISEASE CONTENT ---------- */
 .disease-content {
-  max-height: 0;                     /* collapsed */
+  max-height: 0;                          /* collapsed initially */
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  margin-left: 0;                    /* align with header */
-  padding: 0 0;                      /* remove top/bottom padding when collapsed */
-  background-color: var(--bg-light); /* subtle background */
-  border-radius: 0 0 12px 12px;      /* rounded bottom corners */
+  transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease;
+  margin-left: 0;
+  padding: 0 0;                            /* no padding when collapsed */
+  background-color: transparent;           /* let the white card show */
+  border-radius: 0 0 12px 12px;           /* rounded bottom corners */
   box-shadow: inset 0 2px 4px var(--shadow);
+  opacity: 0;                              /* fade-in effect */
 }
 
 .disease-content.show {
-  max-height: 500px;                  /* large enough to fit content */
-  padding: 10px 15px;                 /* restore padding when expanded */
+  max-height: 500px;                       /* enough to fit content */
+  padding: 10px 15px;                      /* restore padding when expanded */
+  opacity: 1;
 }
+
+/* Optional: style paragraphs inside disease content */
+.disease-content p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive adjustments if needed */
+@media (min-width: 600px) {
+  .symptoms-section {
+    padding: 30px 35px;
+  }
+
+  .collapsible-disease-header {
+    font-size: 1.15em;
+  }
+}
+
 
 
 
