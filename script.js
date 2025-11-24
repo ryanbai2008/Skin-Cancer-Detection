@@ -145,11 +145,19 @@ exampleButtons[0].classList.add("active");
 // Collapsible behavior for each disease
 // Collapsible behavior for each disease
 document.querySelectorAll('.collapsible-disease-header').forEach(header => {
+  const arrow = header.querySelector('.arrow');
+  const content = header.nextElementSibling;
+
+  // Ensure initially collapsed
+  content.classList.remove('show');
+  arrow.textContent = '▼';
+
   header.addEventListener('click', () => {
-    const content = header.nextElementSibling;
-    content.classList.toggle('show');
+    const isShown = content.classList.toggle('show');
+    arrow.textContent = isShown ? '▲' : '▼';
   });
 });
+
 
 
 
