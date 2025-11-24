@@ -257,3 +257,19 @@ button:hover {
   gap: 15px;
 }
 
+/* DISEASE SYMPTOMS STUFF */
+.disease-content {
+  max-height: 0;           /* collapsed */
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  margin-left: 1rem;
+  padding: 0 0;            /* remove top/bottom padding when collapsed */
+  border-left: 2px solid #ccc;
+}
+
+.disease-content.show {
+  max-height: 500px;       /* large enough to fit content */
+  padding: 0.5rem 0 1rem 1rem;  /* restore padding when expanded */
+}
+
+
