@@ -140,4 +140,17 @@ exampleButtons.forEach(btn => {
 exampleButtons[0].classList.add("active");
 
 
+// Collapsible behavior for each disease
+// Collapsible behavior for each disease
+// Collapsible behavior for each disease
+// Collapsible behavior for each disease
+document.querySelectorAll('.collapsible-disease-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  });
+});
+
+
+
 
