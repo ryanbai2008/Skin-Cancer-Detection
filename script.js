@@ -98,13 +98,34 @@ let imageData = null;
 const collapsibleHeader = document.querySelector(".collapsible-header");
 const examplesContent = document.querySelector(".examples-content");
 
+// if (collapsibleHeader && examplesContent) {
+//   collapsibleHeader.addEventListener("click", () => {
+//     examplesContent.classList.toggle("show");  // toggle the show class
+//     const isVisible = examplesContent.classList.contains("show");
+//     collapsibleHeader.textContent = isVisible 
+//       ? "Example Classifications (Show less) ▲" 
+//       : "Example Classifications (Show more) ▼";
+//   });
+// }
+
 if (collapsibleHeader && examplesContent) {
   collapsibleHeader.addEventListener("click", () => {
-    examplesContent.classList.toggle("show");  // toggle the show class
-    const isVisible = examplesContent.classList.contains("show");
-    collapsibleHeader.textContent = isVisible 
-      ? "Example Classifications (Show less) ▲" 
-      : "Example Classifications (Show more) ▼";
+    
+    const isOpening = !examplesContent.classList.contains("show");
+
+    if (isOpening) {
+      // Auto-fit height
+      examplesContent.style.maxHeight = examplesContent.scrollHeight + "px";
+      examplesContent.style.opacity = "1";
+      collapsibleHeader.textContent = "Example Classifications (Show less) ▲";
+    } else {
+      // Collapse
+      examplesContent.style.maxHeight = "0px";
+      examplesContent.style.opacity = "0";
+      collapsibleHeader.textContent = "Example Classifications (Show more) ▼";
+    }
+
+    examplesContent.classList.toggle("show");
   });
 }
 
