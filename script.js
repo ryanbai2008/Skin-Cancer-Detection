@@ -137,7 +137,15 @@ exampleButtons.forEach(btn => {
     exampleImage.src = `assets/example_image_${exampleNum}.jpg`;
 
     // Reset results placeholder (you can later populate with actual classification)
-    exampleResult.innerHTML = `<p>Example ${exampleNum} of 3 for what results may look like</p>`;
+    if (currentExample == 1) {
+      exampleResult.innerHTML = `<p><strong>Example of Melanocytic Nevus classified accurately</strong></p>`;
+    }
+    else if (currentExample == 2) {
+      exampleResult.innerHTML = `<p><strong>Example of Melanoma classified as the most likely condition with Nevus following as a close second. This classification was accurate, but shows that there can be uncertainty when distinguishing between two similar conditions</strong></p>`;
+    }
+    else if (currentExample == 3) {
+      exampleResult.innerHTML = `<p><strong>Example of Basal Cell Carcinoma classified accurately</strong></p>`;
+    }
 
     // Highlight active button
     exampleButtons.forEach(b => b.classList.remove("active"));
