@@ -123,7 +123,7 @@ if (currentExample == 2) {
   exampleResult.innerHTML = `<p><strong>Example of Melanoma classified as the most likely condition with Nevus following as a close second. This classification was accurate, but shows that there can be uncertainty when distinguishing between two similar conditions</strong></p>`;
 }
 if (currentExample == 1) {
-  exampleResult.innerHTML = `<p><strong>Example of Actinic Keratosis/Intra-epithelial Carcinoma classified accurately</strong></p>`;
+  exampleResult.innerHTML = `<p><strong>Example of Basal Cell Carcinoma classified accurately</strong></p>`;
 }
 
 
