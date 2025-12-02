@@ -115,7 +115,7 @@ if (collapsibleHeader && examplesContent) {
 
     if (isOpening) {
       // Auto-fit height
-      examplesContent.style.maxHeight = examplesContent.scrollHeight * 1.05 + "px";
+      examplesContent.style.maxHeight = examplesContent.scrollHeight * 1.15 + "px";
       examplesContent.style.opacity = "1";
       collapsibleHeader.textContent = "Example Classifications (Show less) ▲";
     } else {
