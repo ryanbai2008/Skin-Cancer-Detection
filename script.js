@@ -116,7 +116,16 @@ const exampleResult = document.getElementById("example-result");
 // Preload initial example (example 1)
 let currentExample = 1;
 exampleImage.src = `assets/example_image_${currentExample}.jpg`;
-exampleResult.innerHTML = `<p>Example ${currentExample} of 3 for what results may look like</p>`;
+if (currentExample == 1) {
+  exampleResult.innerHTML = `<p><strong>Example of Melanocytic Nevus classified accurately</strong></p>`;
+}
+if (currentExample == 2) {
+  exampleResult.innerHTML = `<p><strong>Example of Melanoma classified as the most likely condition with Nevus following as a close second. This classification was accurate, but shows that there can be uncertainty when distinguishing between two similar conditions</strong></p>`;
+}
+if (currentExample == 1) {
+  exampleResult.innerHTML = `<p><strong>Example of Actinic Keratosis/Intra-epithelial Carcinoma classified accurately</strong></p>`;
+}
+
 
 // Button click logic
 exampleButtons.forEach(btn => {
