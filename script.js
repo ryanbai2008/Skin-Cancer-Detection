@@ -1,7 +1,6 @@
 const labels = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc', 'mel'];
 let labelMap = {};
 
-// Load labels.json
 fetch("labels.json")
   .then(res => res.json())
   .then(data => labelMap = data)
@@ -94,7 +93,7 @@ let imageData = null;
 
 // -------------------- Expandable Example Section --------------------
 
-// Collapsible toggle
+//collapsible toggle
 const collapsibleHeader = document.querySelector(".collapsible-header");
 const examplesContent = document.querySelector(".examples-content");
 
@@ -114,12 +113,12 @@ if (collapsibleHeader && examplesContent) {
     const isOpening = !examplesContent.classList.contains("show");
 
     if (isOpening) {
-      // Auto-fit height
+      //auto-fit height
       examplesContent.style.maxHeight = examplesContent.scrollHeight * 1.15 + "px";
       examplesContent.style.opacity = "1";
       collapsibleHeader.textContent = "Example Classifications (Show less) ▲";
     } else {
-      // Collapse
+      //collapse
       examplesContent.style.maxHeight = "0px";
       examplesContent.style.opacity = "0";
       collapsibleHeader.textContent = "Example Classifications (Show more) ▼";
@@ -129,12 +128,12 @@ if (collapsibleHeader && examplesContent) {
   });
 }
 
-// Example buttons logic
+//example buttons logic
 const exampleButtons = document.querySelectorAll(".example-btn");
 const exampleImage = document.getElementById("example-image");
 const exampleResult = document.getElementById("example-result");
 
-// Preload initial example (example 1)
+//preload initial example (example 1)
 let currentExample = 1;
 exampleImage.src = `assets/example_image_${currentExample}.jpg`;
 if (currentExample == 1) {
@@ -148,16 +147,16 @@ else if (currentExample == 3) {
 }
 
 
-// Button click logic
+//button click logic
 exampleButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const exampleNum = btn.getAttribute("data-example");
     currentExample = exampleNum;
 
-    // Update image
+    //update image
     exampleImage.src = `assets/example_image_${exampleNum}.jpg`;
 
-    // Reset results placeholder (you can later populate with actual classification)
+    //reset results placeholder (you can later populate with actual classification)
     if (currentExample == 1) {
       exampleResult.innerHTML = `<p><strong>Example of Melanocytic Nevus classification</strong></p>`;
     }
@@ -168,25 +167,22 @@ exampleButtons.forEach(btn => {
       exampleResult.innerHTML = `<p><strong>Example of Basal Cell Carcinoma classification</strong></p>`;
     }
 
-    // Highlight active button
+    //highlight active button
     exampleButtons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
   });
 });
 
-// Set the first button as active initially
+//set the first button as active initially
 exampleButtons[0].classList.add("active");
 
 
-// Collapsible behavior for each disease
-// Collapsible behavior for each disease
-// Collapsible behavior for each disease
-// Collapsible behavior for each disease
+//collapsible behavior for each disease
 document.querySelectorAll('.collapsible-disease-header').forEach(header => {
   const arrow = header.querySelector('.arrow');
   const content = header.nextElementSibling;
 
-  // Ensure initially collapsed
+  //ensure initially collapsed
   content.classList.remove('show');
   arrow.textContent = '▼';
 
