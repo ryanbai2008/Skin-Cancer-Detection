@@ -102,8 +102,8 @@ const examplesContent = document.querySelector(".examples-content");
 //     examplesContent.classList.toggle("show");  // toggle the show class
 //     const isVisible = examplesContent.classList.contains("show");
 //     collapsibleHeader.textContent = isVisible 
-//       ? "Example Classifications (Show less) ▲" 
-//       : "Example Classifications (Show more) ▼";
+//       ? "Example Classifications (Click to show less) ▲" 
+//       : "Example Classifications (Click to show more) ▼";
 //   });
 // }
 
@@ -116,12 +116,12 @@ if (collapsibleHeader && examplesContent) {
       //auto-fit height
       examplesContent.style.maxHeight = examplesContent.scrollHeight * 1.15 + "px";
       examplesContent.style.opacity = "1";
-      collapsibleHeader.textContent = "Example Classifications (Show less) ▲";
+      collapsibleHeader.textContent = "Example Classifications (Click to show less) ▲";
     } else {
       //collapse
       examplesContent.style.maxHeight = "0px";
       examplesContent.style.opacity = "0";
-      collapsibleHeader.textContent = "Example Classifications (Show more) ▼";
+      collapsibleHeader.textContent = "Example Classifications (Click to show more) ▼";
     }
 
     examplesContent.classList.toggle("show");
@@ -135,9 +135,9 @@ const exampleResult = document.getElementById("example-result");
 
 //preload initial example (example 1)
 let currentExample = 1;
-exampleImage.src = `assets/example_image_${currentExample}.jpg`;
+exampleImage.src = `assets/new_example_image_${currentExample}.jpg`;
 if (currentExample == 1) {
-  exampleResult.innerHTML = `<p><strong>Example of Melanocytic Nevus classification</strong></p>`;
+  exampleResult.innerHTML = `<p><strong>Example of Melanoma classification</strong></p>`;
 }
 else if (currentExample == 2) {
   exampleResult.innerHTML = `<p><strong>Example of Melanoma classification as the most likely condition with Nevus following as a close second. This classification was accurate, but shows that there can be some uncertainty when distinguishing between two similar conditions</strong></p>`;
